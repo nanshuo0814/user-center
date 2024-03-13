@@ -34,13 +34,15 @@ public class UserServiceTest {
         Assertions.assertTrue(result);
     }
 
+    // https://www.code-nav.cn/
+
     /**
      * 测试更新用户
      */
     @Test
     public void testUpdateUser() {
         User user = new User();
-        user.setId(3L);
+        user.setId(1L);
         user.setUsername("dogYupi");
         user.setUserAccount("123");
         user.setAvatarUrl("https://636f-codenav-8grj8px727565176-1256524210.tcb.qcloud.la/img/logo.png");
@@ -57,9 +59,11 @@ public class UserServiceTest {
      */
     @Test
     public void testDeleteUser() {
-        boolean result = userService.removeById(2L);
+        boolean result = userService.removeById(1L);
         Assertions.assertTrue(result);
     }
+
+    // https://space.bilibili.com/12890453/
 
     /**
      * 测试获取用户
@@ -78,28 +82,29 @@ public class UserServiceTest {
         String userAccount = "yupi";
         String userPassword = "";
         String checkPassword = "123456";
-        long result = userService.userRegister(userAccount, userPassword, checkPassword);
+        String planetCode = "1";
+        long result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
         Assertions.assertEquals(-1, result);
         userAccount = "yu";
-        result = userService.userRegister(userAccount, userPassword, checkPassword);
+        result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
         Assertions.assertEquals(-1, result);
         userAccount = "yupi";
         userPassword = "123456";
-        result = userService.userRegister(userAccount, userPassword, checkPassword);
+        result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
         Assertions.assertEquals(-1, result);
         userAccount = "yu pi";
         userPassword = "12345678";
-        result = userService.userRegister(userAccount, userPassword, checkPassword);
+        result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
         Assertions.assertEquals(-1, result);
         checkPassword = "123456789";
-        result = userService.userRegister(userAccount, userPassword, checkPassword);
+        result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
         Assertions.assertEquals(-1, result);
         userAccount = "dogYupi";
         checkPassword = "12345678";
-        result = userService.userRegister(userAccount, userPassword, checkPassword);
+        result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
         Assertions.assertEquals(-1, result);
         userAccount = "yupi";
-        result = userService.userRegister(userAccount, userPassword, checkPassword);
+        result = userService.userRegister(userAccount, userPassword, checkPassword, planetCode);
         Assertions.assertEquals(-1, result);
     }
 }
