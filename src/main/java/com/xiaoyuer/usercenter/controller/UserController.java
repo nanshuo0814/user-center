@@ -1,5 +1,6 @@
 package com.xiaoyuer.usercenter.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.xiaoyuer.usercenter.common.BaseResponse;
 import com.xiaoyuer.usercenter.common.ErrorCode;
 import com.xiaoyuer.usercenter.common.ResultUtils;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.xiaoyuer.usercenter.contant.UserConstant.ADMIN_ROLE;
 import static com.xiaoyuer.usercenter.contant.UserConstant.USER_LOGIN_STATE;
@@ -138,5 +141,26 @@ public class UserController {
         Object userObj = request.getSession().getAttribute(USER_LOGIN_STATE);
         User user = (User) userObj;
         return user != null && user.getUserRole() == ADMIN_ROLE;
+    }
+
+    /**
+     * 搜索用户
+     *
+     * @param username 用户名
+     * @param request  请求
+     * @return {@code BaseResponse<List<User>>}
+     */
+    @GetMapping("/search")
+    public BaseResponse<List<User>> searchUsers(String username, HttpServletRequest request) {
+        if (!isAdmin(request)) {
+            throw new BusinessException(ErrorCode.NO_AUTH, "缺少管理员权限");
+        }
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        if (StringUtils.isNotBlank(username)) {
+            queryWrapper.like("username", username);
+        }
+        List<User> userList = userService.list(queryWrapper);
+        List<User> list = userList.stream().map(user -> userService.getSafetyUser(user)).collect(Collectors.toList());
+        return ResultUtils.success(list);
     }
 }
