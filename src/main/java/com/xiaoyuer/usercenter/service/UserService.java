@@ -11,4 +11,14 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface UserService extends IService<User> {
 
+    /**
+     * 用户注册
+     *
+     * @param userAccount   用户帐户
+     * @param userPassword  用户密码
+     * @param checkPassword 检查密码
+     * @return long
+     */
+    long userRegister(String userAccount, String userPassword, String checkPassword);
+
 }
