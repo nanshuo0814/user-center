@@ -1,0 +1,17 @@
+# 应用服务 WEB
+server:
+  port: 8080
+spring:
+  application:
+    name: user-center
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    # todo 注意这个端口号，我的是3305，默认是3306
+    url: jdbc:mysql://127.0.0.1:3305/xiaoyuer?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+# mybatis-plus
+mybatis-plus:
+  configuration:
+    mapUnderscoreToCamelCase: false
+
