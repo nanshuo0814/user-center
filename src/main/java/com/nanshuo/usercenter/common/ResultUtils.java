@@ -1,4 +1,4 @@
-package com.xiaoyuer.usercenter.common;
+package com.nanshuo.usercenter.common;
 
 /**
  * 返回工具类

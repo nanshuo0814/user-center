@@ -1,8 +1,8 @@
-package com.xiaoyuer.usercenter.service;
+package com.nanshuo.usercenter.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xiaoyuer.usercenter.model.domain.User;
+import com.nanshuo.usercenter.model.domain.User;
 
 import javax.servlet.http.HttpServletRequest;
 

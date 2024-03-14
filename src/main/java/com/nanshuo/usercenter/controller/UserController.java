@@ -1,14 +1,15 @@
-package com.xiaoyuer.usercenter.controller;
+package com.nanshuo.usercenter.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.xiaoyuer.usercenter.common.BaseResponse;
-import com.xiaoyuer.usercenter.common.ErrorCode;
-import com.xiaoyuer.usercenter.common.ResultUtils;
-import com.xiaoyuer.usercenter.exception.BusinessException;
-import com.xiaoyuer.usercenter.model.domain.User;
-import com.xiaoyuer.usercenter.model.domain.request.UserLoginRequest;
-import com.xiaoyuer.usercenter.model.domain.request.UserRegisterRequest;
-import com.xiaoyuer.usercenter.service.UserService;
+import com.nanshuo.usercenter.common.BaseResponse;
+import com.nanshuo.usercenter.common.ErrorCode;
+import com.nanshuo.usercenter.common.ResultUtils;
+import com.nanshuo.usercenter.contant.UserConstant;
+import com.nanshuo.usercenter.exception.BusinessException;
+import com.nanshuo.usercenter.service.UserService;
+import com.nanshuo.usercenter.model.domain.User;
+import com.nanshuo.usercenter.model.domain.request.UserLoginRequest;
+import com.nanshuo.usercenter.model.domain.request.UserRegisterRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +17,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static com.xiaoyuer.usercenter.contant.UserConstant.ADMIN_ROLE;
-import static com.xiaoyuer.usercenter.contant.UserConstant.USER_LOGIN_STATE;
 
 /**
  * 用户接口
@@ -99,7 +97,7 @@ public class UserController {
      */
     @GetMapping("/current")
     public BaseResponse<User> getCurrentUser(HttpServletRequest request) {
-        Object userObj = request.getSession().getAttribute(USER_LOGIN_STATE);
+        Object userObj = request.getSession().getAttribute(UserConstant.USER_LOGIN_STATE);
         User currentUser = (User) userObj;
         if (currentUser == null) {
             throw new BusinessException(ErrorCode.NOT_LOGIN);
@@ -138,9 +136,9 @@ public class UserController {
      */
     private boolean isAdmin(HttpServletRequest request) {
         // 仅管理员可查询
-        Object userObj = request.getSession().getAttribute(USER_LOGIN_STATE);
+        Object userObj = request.getSession().getAttribute(UserConstant.USER_LOGIN_STATE);
         User user = (User) userObj;
-        return user != null && user.getUserRole() == ADMIN_ROLE;
+        return user != null && user.getUserRole() == UserConstant.ADMIN_ROLE;
     }
 
     /**

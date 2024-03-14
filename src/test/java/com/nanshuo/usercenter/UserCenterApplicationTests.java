@@ -1,4 +1,4 @@
-package com.xiaoyuer.usercenter;
+package com.nanshuo.usercenter;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +13,7 @@ class UserCenterApplicationTests {
 
     @Test
     void testDigestPassword() {
-        String encryptPassword = DigestUtils.md5DigestAsHex(("ydg" + "xiaoyuer").getBytes());
+        String encryptPassword = DigestUtils.md5DigestAsHex(("ydg" + "nanshuo").getBytes());
         System.out.println(encryptPassword);
     }
 

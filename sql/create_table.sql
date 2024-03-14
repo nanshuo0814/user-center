@@ -1,10 +1,10 @@
 # 数据库初始化
 
 -- 创建库
-create database if not exists xiaoyuer;
+create database if not exists nanshuo;
 
 -- 切换库
-use xiaoyuer;
+use nanshuo;
 
 # 用户表
 create table user
@@ -27,4 +27,4 @@ create table user
 )
     comment '用户' engine innodb charset utf8mb4;
 # 导入示例用户
-INSERT INTO xiaoyuer.user (username, userAccount, avatarUrl, gender, userPassword, phone, email, userStatus, createTime, updateTime, isDelete, userRole, planetCode) VALUES ('小鱼儿','xiaoyuer', 'https://img.ydg.icu/file/xiaoyuer-blog/6.jpg', null, 'b0dd3697a192885d7c055db46155b26a', null, null, 0, '2023-08-06 14:14:22', '2023-08-06 14:39:37', 0, 1, '1');
+INSERT INTO nanshuo.user (username, userAccount, avatarUrl, gender, userPassword, phone, email, userStatus, createTime, updateTime, isDelete, userRole, planetCode) VALUES ('小鱼儿','nanshuo', 'https://img.ydg.icu/file/nanshuo-blog/6.jpg', null, 'b0dd3697a192885d7c055db46155b26a', null, null, 0, '2023-08-06 14:14:22', '2023-08-06 14:39:37', 0, 1, '1');

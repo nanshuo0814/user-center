@@ -1,13 +1,13 @@
-package com.xiaoyuer.usercenter.service.impl;
+package com.nanshuo.usercenter.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xiaoyuer.usercenter.common.ErrorCode;
-import com.xiaoyuer.usercenter.contant.UserConstant;
-import com.xiaoyuer.usercenter.exception.BusinessException;
-import com.xiaoyuer.usercenter.mapper.UserMapper;
-import com.xiaoyuer.usercenter.model.domain.User;
-import com.xiaoyuer.usercenter.service.UserService;
+import com.nanshuo.usercenter.common.ErrorCode;
+import com.nanshuo.usercenter.contant.UserConstant;
+import com.nanshuo.usercenter.exception.BusinessException;
+import com.nanshuo.usercenter.service.UserService;
+import com.nanshuo.usercenter.mapper.UserMapper;
+import com.nanshuo.usercenter.model.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -17,8 +17,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static com.xiaoyuer.usercenter.contant.UserConstant.USER_LOGIN_STATE;
 
 /**
  * 用户服务实现类
@@ -134,7 +132,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         // 3. 用户脱敏
         User safetyUser = getSafetyUser(user);
         // 4. 记录用户的登录态
-        request.getSession().setAttribute(USER_LOGIN_STATE, safetyUser);
+        request.getSession().setAttribute(UserConstant.USER_LOGIN_STATE, safetyUser);
         return safetyUser;
     }
 
@@ -167,7 +165,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Override
     public int userLogout(HttpServletRequest request) {
         // 移除登录态
-        request.getSession().removeAttribute(USER_LOGIN_STATE);
+        request.getSession().removeAttribute(UserConstant.USER_LOGIN_STATE);
         return 1;
     }
 

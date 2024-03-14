@@ -1,4 +1,4 @@
-package com.xiaoyuer.usercenter.contant;
+package com.nanshuo.usercenter.contant;
 
 /**
  * 用户常量

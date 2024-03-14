@@ -1,4 +1,4 @@
-package com.xiaoyuer.usercenter.model.domain.request;
+package com.nanshuo.usercenter.model.domain.request;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.xiaoyuer.usercenter.common;
+package com.nanshuo.usercenter.common;
 
 import lombok.Data;
 

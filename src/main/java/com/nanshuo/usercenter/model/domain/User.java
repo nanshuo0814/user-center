@@ -1,4 +1,4 @@
-package com.xiaoyuer.usercenter.model.domain;
+package com.nanshuo.usercenter.model.domain;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;

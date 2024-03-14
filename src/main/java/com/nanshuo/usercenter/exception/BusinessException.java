@@ -1,7 +1,7 @@
-package com.xiaoyuer.usercenter.exception;
+package com.nanshuo.usercenter.exception;
 
 
-import com.xiaoyuer.usercenter.common.ErrorCode;
+import com.nanshuo.usercenter.common.ErrorCode;
 import lombok.Getter;
 
 /**
