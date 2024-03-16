@@ -4,6 +4,7 @@ FROM maven:3.5-jdk-8-alpine
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
+# COPY user-center-0.0.1-SNAPSHOT.jar ./user-center-0.0.1-SNAPSHOT.jar
 
 # Build a release artifact.
 RUN mvn package -DskipTests
